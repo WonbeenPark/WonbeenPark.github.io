@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wonbeen Park</title>
+<meta name="description" content="Wonbeen Park — PhD student in Industrial Engineering at Pusan National University. Optimization, heuristics, and reinforcement learning for combinatorial optimization.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --navy:#17375E; --navy-2:#203864; --blue:#034EA1; --blue-2:#0C62AF;
+    --tint:#EAF0F7; --line:#D5DFEC; --ink:#262626; --sub:#5F6670; --muted:#8A9099;
+    --accent:#F2A900;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+       color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px}
+
+  /* header */
+  header{background:var(--navy);color:#fff;padding:64px 0 44px}
+  .kicker{color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.04em}
+  h1{font-size:44px;line-height:1.15;margin:10px 0 6px;font-weight:800;letter-spacing:-.01em}
+  .role{color:#C9D6E8;font-size:16px;margin:0}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .links a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid rgba(255,255,255,.28);
+           border-radius:4px;color:#fff;font-size:14px;font-weight:500}
+  .links a:hover{background:rgba(255,255,255,.08);text-decoration:none}
+  .links a.cv{background:#fff;color:var(--navy);border-color:#fff;font-weight:700}
+  .links a.cv:hover{background:var(--tint)}
+
+  nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5}
+  nav .wrap{display:flex;gap:22px;overflow-x:auto}
+  nav a{color:var(--sub);font-size:14px;font-weight:600;padding:13px 0;white-space:nowrap;border-bottom:2px solid transparent}
+  nav a:hover{color:var(--blue);text-decoration:none;border-bottom-color:var(--blue)}
+
+  /* sections */
+  section{padding:44px 0 8px}
+  h2{display:flex;align-items:center;gap:12px;font-size:22px;color:var(--navy);margin:0 0 18px;font-weight:800}
+  h2 .no{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:30px;padding:0 8px;
+         background:var(--navy-2);color:#fff;font-size:14px;font-weight:700;border-radius:3px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  h3{font-size:14px;color:var(--blue);margin:24px 0 10px;font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+  p{margin:0 0 12px}
+
+  .about p{font-size:16px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tags span{background:var(--tint);color:var(--navy);font-size:13px;font-weight:600;padding:5px 11px;border-radius:3px}
+
+  /* entries */
+  .pub{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:4px;padding:14px 18px;margin-bottom:12px}
+  .pub .title{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:4px}
+  .pub .authors{font-size:14px;color:var(--sub)}
+  .pub .authors b{color:var(--ink)}
+  .pub .venue{font-size:14px;color:var(--sub);margin-top:2px}
+  .pub .venue i{color:var(--navy);font-style:normal;font-weight:600}
+  .pub .meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px;font-size:13px}
+  details summary{cursor:pointer;color:var(--blue-2);font-weight:600;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details summary::before{content:"+ "}
+  details[open] summary::before{content:"− "}
+  details .abs{margin-top:8px;font-size:14px;color:#3B4048;background:var(--tint);padding:12px 14px;border-radius:3px}
+  .pub.domestic{border-left-color:#8497B0}
+
+  .row{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid #EEF2F7}
+  .row:last-child{border-bottom:0}
+  .row .when{color:var(--muted);font-size:14px;padding-top:1px}
+  .row .what b{display:block;font-size:15px}
+  .row .what span{display:block;color:var(--sub);font-size:14px}
+
+  .award{background:var(--tint);border-radius:4px;padding:16px 18px;display:flex;gap:16px;align-items:flex-start}
+  .award .badge{background:var(--navy-2);color:#fff;font-weight:800;font-size:15px;border-radius:3px;padding:8px 10px;white-space:nowrap}
+  .award b{display:block;font-size:16px;color:var(--navy)}
+  .award span{display:block;color:var(--sub);font-size:14px}
+
+  footer{margin-top:48px;padding:22px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+
+  @media (max-width:600px){
+    h1{font-size:34px}
+    header{padding:44px 0 32px}
+    .row{grid-template-columns:1fr;gap:2px}
+    .award{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">INDUSTRIAL ENGINEERING · PUSAN NATIONAL UNIVERSITY</div>
+    <h1>Wonbeen Park</h1>
+    <p class="role">PhD Student · Optimization, heuristics, and learning for combinatorial problems</p>
+    <div class="links">
+      <a class="cv" href="CV_WonbeenPark_EN.pdf">CV (English)</a>
+      <a class="cv" href="CV_WonbeenPark_KR.pdf">CV (Korean)</a>
+      <a href="mailto:wbpark@pusan.ac.kr">wbpark@pusan.ac.kr</a>
+      <a href="https://www.linkedin.com/in/wonbeenpark">LinkedIn</a>
+      <a href="https://github.com/WonbeenPark">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#presentations">Presentations</a>
+    <a href="#awards">Honors</a>
+    <a href="#education">Education &amp; Experience</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="about" class="about">
+  <h2><span class="no">01</span>About</h2>
+  <p>I am a PhD student in Industrial Data Science &amp; Engineering at the Department of Industrial Engineering, Pusan National University, working in the Risk Analytics Lab with Prof. Dowon Kim.</p>
+  <p>My research is on optimization: mathematical models and heuristic algorithms, and more recently reinforcement learning for combinatorial problems. I apply these methods to container terminal operations, vehicle routing, and energy systems.</p>
+  <p>Before graduate school, I spent two years at the Korea Energy Economics Institute supporting electricity policy research, and I hold a Bachelor of Economics from Soongsil University.</p>
+  <div class="tags">
+    <span>Mathematical Optimization</span><span>Mixed Integer Programming</span><span>Heuristics</span>
+    <span>Reinforcement Learning</span><span>Scheduling</span><span>Vehicle Routing</span><span>Energy Systems</span>
+  </div>
+</section>
+
+<section id="publications">
+  <h2><span class="no">02</span>Publications</h2>
+
+  <h3>International Journals</h3>
+
+  <div class="pub">
+    <div class="title">Preemptive scheduling of a single yard crane for terminal efficiency</div>
+    <div class="authors">Jeongheon Kim, <b>Wonbeen Park</b>, Dowon Kim</div>
+    <div class="venue"><i>Annals of Operations Research</i> (2026)</div>
+    <div class="meta">
+      <a href="https://doi.org/10.1007/s10479-026-07474-6">DOI: 10.1007/s10479-026-07474-6</a>
+      <details><summary>Summary</summary>
+        <div class="abs">Studies yard crane scheduling in an automated container terminal where vehicle arrivals concentrate at limited input/output points. The crane may interrupt a move, stage the container temporarily, and serve another request first. We formulate a mixed-integer model that trades off makespan against vehicle waiting and storage delays.</div>
+      </details>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="title">Revisiting the total cost of ownership incorporating inconvenience costs</div>
+    <div class="authors"><b>Wonbeen Park</b>, Jongwoo Kim, Taeyoung Jin, Dowon Kim</div>
+    <div class="venue"><i>Research in Transportation Business &amp; Management</i>, 68, 101801 (2026)</div>
+    <div class="meta">
+      <a href="https://doi.org/10.1016/j.rtbm.2026.101801">DOI: 10.1016/j.rtbm.2026.101801</a>
+      <details><summary>Summary</summary>
+        <div class="abs">Extends total cost of ownership comparisons of battery electric and hydrogen fuel cell vehicles in South Korea by adding the inconvenience costs of charging and refueling, and examines how infrastructure, fiscal incentives, and fuel prices shape the comparison.</div>
+      </details>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="title">Evaluating global carbon neutrality commitments: An integrated assessment model approach to the 2 °C target</div>
+    <div class="authors">Dowon Kim, <b>Wonbeen Park</b>, Taeyoung Jin</div>
+    <div class="venue"><i>Environmental Science &amp; Policy</i>, 174, 104280 (2025)</div>
+    <div class="meta">
+      <a href="https://doi.org/10.1016/j.envsci.2025.104280">DOI: 10.1016/j.envsci.2025.104280</a>
+      <details><summary>Summary</summary>
+        <div class="abs">Uses the RICE integrated assessment model with the climate pledges of 184 countries to compare business-as-usual, NDC, net-zero, and 1.5 °C scenarios. Current targets leave long-run warming above 2 °C, and the study estimates the additional near-term reductions needed and discusses cooperative governance to limit free-riding.</div>
+      </details>
+    </div>
+  </div>
+
+  <h3>Domestic Journals</h3>
+
+  <div class="pub domestic">
+    <div class="title">A study on the estimation of optimal ESS capacity for target curtailment rates in Jeju through an economic dispatch model</div>
+    <div class="authors">Seongjun Lee, Jueun Lee, <b>Wonbeen Park</b>, Seola Yun, Juyeon Kim, Dowon Kim</div>
+    <div class="venue"><i>Journal of Environmental Policy and Administration</i>, 32(4), 167–199 (2024) · in Korean</div>
+    <div class="meta">
+      <a href="https://doi.org/10.15301/jepa.2024.32.4.167">DOI: 10.15301/jepa.2024.32.4.167</a>
+      <details><summary>Summary</summary>
+        <div class="abs">Builds an economic dispatch model of the Jeju power system for 2030 and sizes solar-linked and wind-linked energy storage needed to keep renewable curtailment below target rates of 3% and 5%.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="presentations">
+  <h2><span class="no">03</span>Presentations</h2>
+
+  <h3>International Conferences</h3>
+  <div class="pub">
+    <div class="title">Deep reinforcement learning with penalties for vehicle routing with backhauls</div>
+    <div class="authors"><b>Wonbeen Park</b>, Dowon Kim</div>
+    <div class="venue"><i>2026 INFORMS Annual Meeting</i>, San Francisco, CA, USA · Nov 2026</div>
+    <div class="meta">
+      <details><summary>Summary</summary>
+        <div class="abs">A neural routing policy for the VRP with backhauls that prices precedence-violating arcs by their repair cost through the depot, trained with imitation learning and policy-gradient fine-tuning on instances of up to 500 customers. A single model comes within 5% of one-minute PyVRP runs in under a second per instance and scales to instances an order of magnitude larger than those seen in training.</div>
+      </details>
+    </div>
+  </div>
+  <div class="pub">
+    <div class="title">Outlier detection using a leave-one-out cross-validation approach with the goodness-of-the-fit test based on the empirical distribution function</div>
+    <div class="authors"><b>Wonbeen Park</b>, Dowon Kim, Chanseok Park, Nami Jung</div>
+    <div class="venue"><i>2024 Management Innovation Conference: Frontier of Technology, Intelligence and Analytics</i>, Busan, South Korea · Oct 2024</div>
+  </div>
+
+  <h3>Domestic Conferences</h3>
+  <div class="pub domestic">
+    <div class="title">Improving container terminal operations through single yard crane scheduling with temporary storage</div>
+    <div class="authors">Jeongheon Kim, <b>Wonbeen Park</b>, Dowon Kim</div>
+    <div class="venue"><i>2026 Joint Spring Conference of KIIE, KORMS, and KSS</i>, Gyeongju, South Korea · Jun 2026 · in Korean</div>
+  </div>
+  <div class="pub domestic">
+    <div class="title">Outlier detection based on noise removal via normality testing and its application to X-bar control charts</div>
+    <div class="authors"><b>Wonbeen Park</b>, Chanseok Park, Dowon Kim</div>
+    <div class="venue"><i>2024 Joint Fall Conference of KSQM and KORAS</i>, Gyeongju, South Korea · Nov 2024 · in Korean</div>
+  </div>
+</section>
+
+<section id="awards">
+  <h2><span class="no">04</span>Honors</h2>
+  <div class="award">
+    <div class="badge">7th / 958</div>
+    <div>
+      <b>Advanced Optimizer Award, Optimization Grand Challenge 2026</b>
+      <span>LG CNS &amp; Korean Institute of Industrial Engineers · Sep 2026</span>
+      <span>Team BONOBONO, 7th place among 958 teams from 55 countries (shipyard block placement and scheduling).</span>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <h2><span class="no">05</span>Education &amp; Experience</h2>
+  <div class="row"><div class="when">2025 – Present</div><div class="what"><b>PhD Student, Industrial Data Science &amp; Engineering</b><span>Department of Industrial Engineering, Pusan National University</span></div></div>
+  <div class="row"><div class="when">2023 – 2025</div><div class="what"><b>MS, Industrial Data Science &amp; Engineering</b><span>Department of Industrial Engineering, Pusan National University</span></div></div>
+  <div class="row"><div class="when">2020 – 2022</div><div class="what"><b>Research Assistant</b><span>Electricity Policy Research Team, Korea Energy Economics Institute</span></div></div>
+  <div class="row"><div class="when">2012 – 2019</div><div class="what"><b>Bachelor of Economics</b><span>Department of Economics, Soongsil University</span></div></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Wonbeen Park · Last updated November 2026</div>
+</footer>
+
+</body>
+</html>
